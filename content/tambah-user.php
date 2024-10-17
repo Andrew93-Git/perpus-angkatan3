@@ -51,32 +51,10 @@ if (isset($_POST['edit'])) {
                 </legend>
                 <form method="post">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Nama</label>
-                        <input type="text" class="form-control" name="nama" value="<?php echo isset($_GET['edit']) ? $rowEdit['nama'] : '' ?>">
+                        <label for="exampleInputEmail1" class="form-label">Nama Kategori</label>
+                        <input type="text" class="form-control" name="nama_kategori" placeholder="Masukan nama kategori" value="<?php echo isset($_GET['edit']) ? $rowEdit['nama_kategori'] : '' ?>">
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Phone</label>
-                        <input type="text" class="form-control" name="telepon" value="<?php echo isset($_GET['edit']) ? $rowEdit['telepon'] : ''  ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Phone</label>
-                        <input type="text" class="form-control" name="telepon" value="<?php echo isset($_GET['edit']) ? $rowEdit['telepon'] : ''  ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" value="<?php echo isset($_GET['edit']) ? $rowEdit['email'] : '' ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
-                        <br>
-                        <input <?php echo isset($_GET['edit']) ? ($rowEdit['jenis_kelamin'] == "laki-laki") ? 'checked' : '' : '' ?> type="radio" name="jenis_kelamin" value="laki-laki"> Laki-laki
-                        <br>
-                        <input <?php echo isset($_GET['edit']) ? ($rowEdit['jenis_kelamin'] == "Perempuan") ? 'checked' : '' : '' ?> type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan
-                    </div>
+                    
                     <button type="submit" name="<?php echo isset($_GET['edit']) ? 'edit' : 'tambah' ?>" class="btn btn-primary"><?php echo isset($_GET['edit']) ? 'edit' : 'tambah' ?></button>
                 </form>
             </fieldset>

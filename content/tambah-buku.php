@@ -5,7 +5,7 @@ $books = mysqli_query($connection, "SELECT * FROM buku ORDER BY id DESC");
 if (isset($_GET['hapus'])) {
     $id = $_GET['hapus'];
     $queryHapus = mysqli_query($connection, "DELETE FROM buku WHERE id='$id'");
-    header('location: ?pg=book');
+    header('location: ?pg=book&hapusberhasil');
 }
 
 // get data update buku
@@ -21,11 +21,15 @@ if (isset($_POST['edit'])) {
     $judulBuku = $_POST['judul_buku'];
     $pengarang = $_POST['pengarang'];
     $penerbit = $_POST['penerbit'];
-    $tahunTerbit = $_POST['tahun_terbit'];
+    $tahun_terbit = $_POST['tahun_terbit'];
+    $id_kategori = $_POST['id_kategori'];
 
-    $queryEditData = mysqli_query($connection, "UPDATE buku SET judul_buku='$judulBuku', pengarang='$pengarang', penerbit='$penerbit', tahun_terbit='$tahunTerbit' WHERE id='$id'");
+    $queryEditData = mysqli_query($connection, "UPDATE buku SET judul_buku='$judulBuku', pengarang='$pengarang', penerbit='$penerbit', tahun_Terbit='$tahun_terbit', id_kategori='$id_kategori' WHERE id='$id'");
     header('location: ?pg=book');
 }
+
+$queryKategori = mysqli_query($connection, "SELECT * FROM kategori");
+
 
 ?>
 <div class="container">
@@ -40,6 +44,16 @@ if (isset($_POST['edit'])) {
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Judul Buku</label>
                             <input type="text" class="form-control" name="judul_buku" value="<?php echo isset($_GET['edit']) ? $dataEdit['judul_buku'] : '' ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nama Kategori</label>
+                            <select name="id_kategori" id="" class="form-control">
+                                <option value="">Pilih Kategori</option>
+                                <!-- option yang datanya di ambil dari tabel kategori -->
+                                <?php while ($rowKategori = mysqli_fetch_assoc($queryKategori)): ?>
+                                    <option <?php echo isset($_GET['edit']) ? ($rowKategori['id'] == $dataEdit['id_kategori'] ? 'selected' : '') : '' ?> value="<?php echo $rowKategori['id'] ?>"> <?php echo $rowKategori['nama_kategori'] ?></option>
+                                <?php endwhile ?>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Pengarang</label>

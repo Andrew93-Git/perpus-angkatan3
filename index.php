@@ -1,3 +1,14 @@
+<?php
+session_start();
+//empty(kosong
+if (empty($_SESSION['NAMA'])) {
+    header("location:login.php?access=failed");
+
+    include 'koneksi.php';
+    include 'function/helper.php';
+} ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,14 +124,17 @@
 
             <!-- footer -->
             <footer class="bg-white text-light d-flex justify-content-center aling-items-center pt-2">
-                <p class="fs-5 text-dark">Copyright @ 2024 Atio Wahyudi Saputra</p>
+                <p class="fs-5 text-dark">Copyright @ 2024 PPKD JAKARTA PUSAT</p>
             </footer>
             <!-- end of footer -->
         </div>
     </div>
     </div>
 
+
+
     <script src="bootstrap-5.3.3/dist//js//bootstrap.bundle.js"></script>
+
 </body>
 
 </html>
