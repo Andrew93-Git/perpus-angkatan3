@@ -1,0 +1,13 @@
+body {
+  min-height: 2000px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.jumbotron {
+  padding-top: 2rem;
+  background-color: #a2d9ff;
+}
+
+#project {
+  background-color: #a2d9ff;
+}
